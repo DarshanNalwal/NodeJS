@@ -82,26 +82,6 @@ app.get("/studentApp/classes/:classId/students/:studentName", (req,res) => {
     });
 });
 
-/**
- * Exercise
- * 
- */
-app.get("/studentApp/classes/:classId/students", (req,res) => {
-    
-    const classId = req.params.classId;
-    const studentName = req.query.studentName;
-
-    if(studentName) {
-        res.status(200).send({
-            studentDetails : (students[classId])[studentName]
-        })
-    } else {
-        res.status(200).send({
-            studentDetails : students[classId]
-        })
-    }
-});
-
 
 /**
  * 
@@ -124,11 +104,52 @@ app.get("/studentApp/classes", (req,res) => {
 
 
 /**
- * 
- * Code to read the requrest param
+ * Exercise
  * 
  */
+ app.get("/studentApp/classes/:classId/students", (req,res) => {
+    
+    const classId = req.params.classId;
+    const studentName = req.query.studentName;
 
+    if(studentName) {
+        res.status(200).send({
+            studentDetails : (students[classId])[studentName]
+        })
+    } else {
+        res.status(200).send({
+            studentDetails : students[classId]
+        })
+    }
+});
+
+
+/**
+ * 
+ * Code to read the Request body
+ * 
+ * POST 127.0.0.1:8000/studentApp/classes/1/students
+ * 
+ * Above API would like to add student in a given class
+ * 
+ * Request Body
+ * 
+ * {
+ *  name: "Alia",
+ *  age: 27,
+ *  subject: "Bollywood"
+ * }
+ * 
+ */
+app.use(express.json());
+// Convert the json request to JS Object so that it could be inferred
+app.post("/studentApp/classes/:classId/students", (req,res) => {
+
+    const classId = req.params.classId;
+    (students[classId])[req.body.studentName] = req.body;
+    res.status(201).send(students[classId]);
+
+});
 
 
 app.listen(8000 , () => {
