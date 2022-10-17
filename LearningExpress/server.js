@@ -152,6 +152,30 @@ app.post("/studentApp/classes/:classId/students", (req,res) => {
 });
 
 
+app.get("/ab+cd", (req,res) => {
+    res.status(200).send("Hello World!");
+});
+
+app.get("/ef?gh", (req,res) => {
+    res.status(200).send("Hello World!");
+});
+
+app.get("/ij*kl", (req,res) => {
+    res.status(200).send("Hello World!");
+});
+
+app.get("/b/", (req,res) => {
+    res.status(200).send("Hello World!");
+});
+
+app.get("/.*fly$/", (req,res) => {
+    res.status(200).send("Hello Fly");
+});
+
+
+const teachersRoute = require("./teachers.route");
+app.use("/teachers", teachersRoute);
+
 app.listen(8000 , () => {
     console.log("Server started");
 });
