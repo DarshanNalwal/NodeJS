@@ -15,5 +15,15 @@
     /**
      * Route for creating the idea
      */
-     app.post("/idea_app/api/v1/ideas", ideaController.createIdeas);
+    app.post("/idea_app/api/v1/ideas", ideaController.createIdeas);
+
+    /**
+     * Route for getting ideas based on id
+     */
+    app.get("/idea_app/api/v1/ideas/:id", ideaController.getIdeasById);
+
+    /**
+     * Route for updating ideas based on id
+     */
+    app.put("/idea_app/api/v1/ideas/", ideaController.updateIdeasById);
  }
