@@ -2,13 +2,14 @@
  * This file is a controller file for idea
  */
 const ideaModel = require("../models/idea.model");
+var count = 1;
 
 /**
  * Logic to create idea
  */
 exports.createIdeas = (req,res) => {
-    ideaModel[req.body.id] = req.body;
-    return res.status(201).send(ideaModel);
+    ideaModel[++count] = req.body;
+    return res.status(200).send(ideaModel);
 }
 
 
