@@ -8,7 +8,8 @@ var count = 1;
  * Logic to create idea
  */
 exports.createIdeas = (req,res) => {
-    ideaModel[++count] = req.body;
+    req.body.id = ++count;
+    ideaModel[count] = req.body;
     return res.status(200).send(ideaModel);
 }
 
