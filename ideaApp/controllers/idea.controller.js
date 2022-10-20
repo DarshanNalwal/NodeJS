@@ -29,7 +29,6 @@ exports.getIdeas = (req, res) => {
  * Logic to fetch idea based on id
  */
 exports.getIdeasById = (req, res) => {
-    // return all the ideas
     return res.status(200).send(ideaModel[req.params.id]);
 }
 
@@ -37,7 +36,6 @@ exports.getIdeasById = (req, res) => {
  * Logic to update a specific idea
  */
 exports.updateIdeasById = (req, res) => {
-    // return all the ideas
     if(ideaModel[req.body.id]) {
         ideaModel[req.body.id] = req.body;
         return res.status(200).send(ideaModel[req.body.id]);
