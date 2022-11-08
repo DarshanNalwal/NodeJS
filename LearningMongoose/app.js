@@ -24,7 +24,15 @@ async function dbOperation() {
      */
     const student = await studentModel.create({
         name: "Vishwa",
-        age: 99
+        age: 99,
+        subjects: ["Maths", "English"],
+        address: {
+            lane1: "Lane1",
+            lane2: "Lane2",
+            street: "AC-23",
+            country: "India",
+            pinCode: 560049
+        }
     });
 
     console.log(student);
