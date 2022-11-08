@@ -22,18 +22,24 @@ async function dbOperation() {
     /**
      * Code to insert some student in the db
      */
-    const student = await studentModel.create({
-        name: "Vishwa",
-        age: 99,
-        subjects: ["Maths", "English"],
-        address: {
-            lane1: "Lane1",
-            lane2: "Lane2",
-            street: "AC-23",
-            country: "India",
-            pinCode: 560049
-        }
-    });
-
-    console.log(student);
+    try {
+        const student = await studentModel.create({
+            name: "Vishwa",
+            age: 17,
+            email: "abc123456@xyz",
+            subjects: ["Maths", "English"],
+            address: {
+                lane1: "Lane1",
+                lane2: "Lane2",
+                street: "AC-23",
+                country: "India",
+                pinCode: 560049
+            }
+        });
+    
+        console.log(student);
+    } catch(e) {
+        console.log(e.message);
+    }
+    
 }
