@@ -44,7 +44,14 @@ const studentSchema = new mongoose.Schema({
             return Date.now();
         }
     },
-    subjects: [String],
+    // Add the custom validation for the subject field
+    subjects: {
+        type: [String],
+        validate: {
+            validator: s => s.length != 0,
+            message: "Subject list is not passed or is empty"
+        }
+    },
     address: addressSchema
 });
 
