@@ -40,3 +40,4 @@
   * Connect the route
   */
  require("./routes/auth.routes")(app);
+ require("./routes/user.routes")(app);
