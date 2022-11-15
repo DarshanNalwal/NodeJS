@@ -1,4 +1,5 @@
 const authController = require("../controllers/auth.controller");
+const verifyUserReqBody = require("../middlewares/verifyUserReqBody");
 
 module.exports = (app) => {
 
@@ -7,7 +8,7 @@ module.exports = (app) => {
      * 
      * Req body
      */
-    app.post("/crm/api/v1/auth/signup", authController.singup);
+    app.post("/crm/api/v1/auth/signup", [verifyUserReqBody.validateUserReqBody] ,authController.singup);
 
     app.post("/crm/api/v1/auth/signin", authController.signin);
 }

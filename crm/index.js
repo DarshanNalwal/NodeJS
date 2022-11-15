@@ -6,6 +6,8 @@
  const serverConfig = require("./configs/server.config");
  const mongoose = require("mongoose");
  const dbConfig = require("./configs/db.config");
+ const userModel = require(".//models/user.model");
+ const bcrypt = require("bcryptjs");
  
  /**
   * MW used to tell the App convert JSON request body
@@ -34,7 +36,27 @@
  });
  db.once("open", ()=>{
      console.log("Connected to the MongoDB");
+     init();
  })
+
+ async function init() {
+    let admin = await userModel.findOne({userId: "admin"});
+    console.log(admin);
+    if(admin) {
+        console.log("Admin is already present");
+    } else {
+        // logic to initilize the application with ADMIN user
+        await userModel.create({
+            name: "ADMIN",
+            userId: "admin",
+            email: "darshannalwal2012@gmail.com",
+            userType: "ADMIN",
+            password: bcrypt.hashSync("Welcome1", 8)
+        });
+
+        console.log("Admin created");
+    }
+ }
  
  /**
   * Connect the route
