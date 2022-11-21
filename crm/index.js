@@ -6,7 +6,7 @@
  const serverConfig = require("./configs/server.config");
  const mongoose = require("mongoose");
  const dbConfig = require("./configs/db.config");
- const userModel = require(".//models/user.model");
+ const userModel = require("./models/user.model");
  const bcrypt = require("bcryptjs");
  
  /**
@@ -63,3 +63,4 @@
   */
  require("./routes/auth.routes")(app);
  require("./routes/user.routes")(app);
+ require("./routes/ticket.routes")(app);

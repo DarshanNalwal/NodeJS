@@ -11,7 +11,6 @@ const jwt = require("jsonwebtoken");
  */
 
 exports.singup = async (req, res) => {
-    console.log(req.body);
     /**
      * Write the complete logic to register/singup any one
      */
